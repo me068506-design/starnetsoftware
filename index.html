@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوفتات وشروحات ستار نت | الملفات والأقسام الرسمية</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="سوفتات وشروحات ستار نت الرسمية">
+    <meta property="og:description" content="أحدث سوفتويرات، ملفات القنوات، أكواد التفعيل، التطبيقات والشروحات الخاصة بأجهزة ستار نت.">
+    <meta property="og:image" content="https://up6.cc/2026/09/178845370327891.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        :root {
+            --bg-color: #08090d;
+            --primary-color: #ff3b30;
+            --secondary-color: #ff6b00;
+            --accent-cyan: #00d2ff;
+            --accent-gold: #ffb300;
+            --card-bg: rgba(20, 16, 24, 0.88);
+            --border-glow: rgba(255, 107, 0, 0.35);
+            --text-main: #ffffff;
+            --text-muted: #9aa0a6;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 90% 5%, rgba(255, 59, 48, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 10% 85%, rgba(255, 107, 0, 0.08) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        .selectable-text { user-select: all; -webkit-user-select: all; }
+        .no-select { user-select: none; -webkit-user-select: none; }
+
+        header {
+            padding: 20px 6% 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(8, 9, 13, 0.95) 0%, rgba(8, 9, 13, 0) 100%);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-brand-logo {
+            height: 40px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 59, 48, 0.5));
+        }
+
+        .header-badge-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 179, 0, 0.12);
+            color: var(--accent-gold);
+            border: 1px solid rgba(255, 179, 0, 0.35);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 10px 16px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .device-avatar-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--secondary-color));
+            box-shadow: 0 0 25px rgba(255, 179, 0, 0.4);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #05060a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid var(--bg-color);
+        }
+
+        .circle-inner img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 179, 0, 0.7));
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ffffff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .breadcrumb-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 107, 0, 0.1);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            padding: 10px 16px;
+            border-radius: 14px;
+            margin-bottom: 4px;
+        }
+
+        .back-btn {
+            background: var(--secondary-color);
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        .back-btn:hover { background: #ff3b30; }
+
+        .breadcrumb-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+        }
+
+        .folders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 16px;
+        }
+
+        .folder-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .folder-card:hover, .folder-card.is-selected {
+            border-color: var(--secondary-color);
+            background: linear-gradient(135deg, rgba(32, 20, 15, 0.95) 0%, rgba(12, 10, 16, 0.98) 100%);
+            box-shadow: 0 0 25px rgba(255, 107, 0, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .folder-card.fix-card {
+            border-color: rgba(255, 179, 0, 0.5);
+            background: linear-gradient(135deg, rgba(35, 25, 12, 0.95) 0%, rgba(14, 12, 10, 0.98) 100%);
+        }
+        .folder-card.fix-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 30px rgba(255, 179, 0, 0.4);
+        }
+        .fix-card .folder-name { color: var(--accent-gold) !important; }
+        .fix-card .folder-icon-circle {
+            background: rgba(255, 179, 0, 0.15);
+            border-color: rgba(255, 179, 0, 0.4);
+            color: var(--accent-gold);
+        }
+
+        .folder-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .folder-icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(255, 107, 0, 0.15);
+            border: 1.5px solid rgba(255, 107, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .folder-texts {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            text-align: right;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .folder-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #ffffff;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+
+        .folder-info {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .folder-arrow {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .folder-card:hover .folder-arrow {
+            background: var(--secondary-color);
+            color: #ffffff;
+            transform: translateX(-4px);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .whatsapp-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp-pro {
+            width: 100%;
+            background: linear-gradient(135deg, #0e2417 0%, #06140c 100%);
+            border: 1.5px solid rgba(37, 211, 102, 0.4);
+            border-radius: 18px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.25s ease;
+        }
+        .btn-whatsapp-pro:hover {
+            border-color: #25D366;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .wa-right-info { display: flex; align-items: center; gap: 14px; }
+        .wa-logo-badge {
+            width: 48px; height: 48px; border-radius: 50%; background: #25D366;
+            display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #ffffff;
+        }
+        .wa-text-col { display: flex; flex-direction: column; gap: 2px; text-align: right; }
+        .wa-title { font-size: 1.1rem; font-weight: 900; color: #ffffff; }
+        .wa-sub { font-size: 0.85rem; color: #a3e7b9; display: flex; align-items: center; gap: 6px; }
+        .online-dot { width: 8px; height: 8px; background-color: #00e676; border-radius: 50%; display: inline-block; }
+        .wa-call-badge { background: rgba(37, 211, 102, 0.15); color: #25D366; padding: 8px 16px; border-radius: 25px; font-weight: 800; font-size: 0.92rem; }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            margin-top: auto;
+        }
+
+        @media (max-width: 600px) {
+            .folders-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.8rem; }
+            .wa-call-badge { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-logo-right">
+            <img src="https://up6.cc/2026/09/178845370327891.png" alt="STARNET" class="header-brand-logo">
+        </div>
+        <div class="header-badge-top no-select">
+            <i class="fas fa-folder-open"></i> أرشيف الملفات الرسمي
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="device-avatar-circle">
+                <div class="circle-inner">
+                    <img src="https://up6.cc/2026/09/178845370327891.png" alt="سوفتات وشروحات ستار نت">
+                </div>
+            </div>
+
+            <h1 id="pageTitle">سوفتات وشروحات ستار نت</h1>
+            <p id="pageDesc">المكتبة الشاملة لجميع سوفتويرات، ملفات القنوات، أكواد التفعيل، التطبيقات والشروحات الرسمية</p>
+        </section>
+
+        <!-- زر الرجوع -->
+        <div id="breadcrumbContainer" style="display: none;">
+            <div class="breadcrumb-bar">
+                <button class="back-btn" onclick="history.back()">
+                    <i class="fas fa-arrow-right"></i> رجوع
+                </button>
+                <span class="breadcrumb-title" id="breadcrumbText">سوفتوير ستارنت الرسمي</span>
+            </div>
+        </div>
+
+        <!-- شبكة العرض الديناميكية -->
+        <div class="folders-grid" id="foldersContainer">
+            <!-- المحتوى يتم تحميله عبر الجافاسكريبت -->
+        </div>
+
+        <!-- أزرار التواصل -->
+        <div class="whatsapp-container">
+            <a href="https://mohamedelsaed.vercel.app/" target="_blank" class="btn-whatsapp-pro">
+                <div class="wa-right-info">
+                    <div class="wa-logo-badge" style="background: linear-gradient(135deg, #00d2ff, #0066ff);"><i class="fas fa-headset"></i></div>
+                    <div class="wa-text-col">
+                        <div class="wa-title">للاستفسار والدعم الفني المباشر</div>
+                        <div class="wa-sub">اضغط هنا لزيارة موقعنا الرسمي والدعم</div>
+                    </div>
+                </div>
+                <div class="wa-call-badge no-select" style="background: rgba(0, 210, 255, 0.15); color: #00d2ff;">التواصل والدعم</div>
+            </a>
+
+            <a href="https://wa.me/201092652777" target="_blank" class="btn-whatsapp-pro">
+                <div class="wa-right-info">
+                    <div class="wa-logo-badge"><i class="fab fa-whatsapp"></i></div>
+                    <div class="wa-text-col">
+                        <div class="wa-title">معرفة الأسعار وكيفية الشراء</div>
+                        <div class="wa-sub"><span class="online-dot"></span> 01092652777</div>
+                    </div>
+                </div>
+                <div class="wa-call-badge no-select">تواصل معنا</div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 | مكتبة <strong>سوفتات وشروحات ستار نت</strong></p>
+    </footer>
+
+    <script>
+        const mainFolders = [
+            { id: 'starnet_official_soft', name: 'سوفتوير ستارنت الرسمي', info: 'ملفات السوفت وير والتحديثات الرسمية', icon: 'fas fa-microchip', hasSub: true },
+            { id: 'channels', name: 'ملفات قنوات ستارنت الرسمية', info: 'أحدث ملفات القنوات وترتيب الريموت', icon: 'fas fa-list-ul', hasSub: false },
+            { id: 'activations', name: 'اكواد التفعيلات صورة لكل جهاز', info: '39 ملف وملفات صور التفعيل', icon: 'fas fa-key', hasSub: false },
+            { id: 'remotes', name: 'برمجة الريموتات', info: '6 ملفات برمجة وإعدادات الريموت', icon: 'fas fa-satellite-dish', hasSub: false },
+            { id: 'apps', name: 'تطبيقات', info: 'أبرز التطبيقات والبرامج الخدمية', icon: 'fas fa-mobile-alt', hasSub: false },
+            { id: 'enigma', name: 'ENIGMAPLUGIN', info: '2 ملف بلجن أنيجما', icon: 'fas fa-plug', hasSub: false },
+            { id: 'transfers', name: 'تحويلات برعاية ستارنت ابراهيم حجازي', info: 'أحدث التحويلات الخاصة بالأجهزة', icon: 'fas fa-exchange-alt', hasSub: false },
+            { id: 'specs', name: 'جهاز ومواصفات', info: '7 ملفات مواصفات الأجهزة', icon: 'fas fa-info-circle', hasSub: false },
+            { id: 'shima_nets', name: 'شبكات تيما', info: 'ملفات إعدادات الشبكات', icon: 'fas fa-network-wired', hasSub: false },
+            { id: 'gesheer_nets', name: 'شبكات جيشير 5', info: '41 ملف خاص بشبكات جيشير 5', icon: 'fas fa-server', hasSub: false },
+            { id: 'explanations', name: 'شروحات', info: '76 ملف شرح تفصيلي لطرق التشغيل والتفعيل', icon: 'fas fa-book-open', full: true, hasSub: false }
+        ];
+
+        const subFoldersOfOfficialSoft = [
+            { name: 'قسم لينكس', info: 'تحديثات أجهزة لينكس 4K وقسم حل مشكلة اون', icon: 'fas fa-folder', isLinux: true },
+            { name: 'قسم معالج ali', info: 'Folders: 1, Files: 2', icon: 'fas fa-folder', isAli: true },
+            { name: 'قسم الاندرويد', info: 'Folders: 14, Files: 30', icon: 'fas fa-folder', isAndroid: true },
+            { name: 'قسم الصن بلس', info: 'ملفات وتحديثات صنباص', icon: 'fas fa-folder', isSunplus: true },
+            { name: 'قسم جي اكس', info: 'ملفات وتحديثات جي اكس', icon: 'fas fa-folder', isLinux: false },
+            { name: 'سات لينك ستارنت', info: 'Folders: 1, Files: 4', icon: 'fas fa-folder', isLinux: false }
+        ];
+
+        const sunplusSectionItems = [
+            { name: '9000 Black', info: 'Folders: 1, Files: 11', icon: 'fas fa-folder' },
+            { name: 'combo 10000', info: 'Folders: 1, Files: 12', icon: 'fas fa-folder', isCombo10000: true },
+            { name: 'Falcon', info: 'Folders: 1, Files: 15', icon: 'fas fa-folder' },
+            { name: 'Force5g', info: 'Folders: 3, Files: 27', icon: 'fas fa-folder' },
+            { name: 'karaoke', info: 'Folders: 1, Files: 15', icon: 'fas fa-folder' },
+            { name: 'nasa', info: 'Folders: 0, Files: 3', icon: 'fas fa-folder' },
+            { name: 'Orange', info: 'Folders: 0, Files: 3', icon: 'fas fa-folder' },
+            { name: 'Premier', info: 'Folders: 1, Files: 18', icon: 'fas fa-folder' },
+            { name: 'rahwan mix shabah grand sport', info: 'Folders: 9, Files: 32', icon: 'fas fa-folder' },
+            { name: 'rambo', info: 'Folders: 0, Files: 3', icon: 'fas fa-folder' },
+            { name: 'rocket', info: 'Folders: 1, Files: 7', icon: 'fas fa-folder' },
+            { name: 'Sega', info: 'Folders: 4, Files: 24', icon: 'fas fa-folder' },
+            { name: 'StrongKong', info: 'Folders: 3, Files: 29', icon: 'fas fa-folder' },
+            { name: 'Tshare (999 RF-Tender)', info: 'Folders: 8, Files: 25', icon: 'fas fa-folder' },
+            { name: 'كومبو 999', info: 'Folders: 0, Files: 3', icon: 'fas fa-folder' },
+            { name: 'VolVo', info: 'Folders: 3, Files: 10', icon: 'fas fa-folder' },
+            { name: 'white 9000', info: 'Folders: 3, Files: 23', icon: 'fas fa-folder' },
+            { name: 'X2 starnet 4m', info: 'Folders: 0, Files: 6', icon: 'fas fa-folder' },
+            { name: 'الاجهزة القديمة واجهرة الاتش دي الميني', info: 'Many files or folders', icon: 'fas fa-folder' }
+        ];
+
+        const combo10000SubItems = [
+            { name: 'سوفت حل مشكلة لود', info: 'مجلد حل مشكلة اللود الخاصة بجهاز 10000 كومبو', icon: 'fas fa-folder', isFixLoad: true },
+            { name: 'STARNET_10000_2507L_Combo_1G_8M_SGC1_TEMA_64131_rls6_20260408_150645.bin', info: 'تحديث إصدار 2026/04/08 (TEMA - الأحدث)', url: 'https://www.mediafire.com/file/kv9gv0aappdg2ri/STARNET_10000_2507L_Combo_1G_8M_SGC1_TEMA_64131_rls6_20260408_150645.bin/file', isFile: true },
+            { name: 'STARNET_10000_2507L_Combo_1G_8M_63091_rls6_20260108.zip', info: 'تحديث إصدار 2026/01/08 (rls6)', url: 'https://www.mediafire.com/file/7gg6p4itv62z050/STARNET_10000_2507L_Combo_1G_8M_63091_rls6_20260108.zip/file', isFile: true },
+            { name: 'STARNET_10000_2507L_Combo_1G_8M_SGC1_5370_59377_20250226_165914.zip', info: 'تحديث إصدار 2025/02/26 (SGC1)', url: 'https://www.mediafire.com/file/54mu9fck0vlwl62/STARNET_10000_2507L_Combo_1G_8M_SGC1_5370_59377_20250226_165914.zip/file', isFile: true },
+            { name: 'STARNET_10000_2507L_Combo_1G_8M_SGC1_7601_56277_20240514_102812.zip', info: 'تحديث إصدار 2024/05/14 (SGC1)', url: 'https://www.mediafire.com/file/pe2j0e6324gq72b/STARNET_10000_2507L_Combo_1G_8M_SGC1_7601_56277_20240514_102812.zip/file', isFile: true },
+            { name: 'STARNET_10000_2507L_Combo_1G_8M_SGC1_53327_20230925_165140.zip', info: 'تحديث إصدار 2023/09/25 (SGC1)', url: 'https://www.mediafire.com/file/uxt4dnigrwxuabn/STARNET_10000_2507L_Combo_1G_8M_SGC1_53327_20230925_165140.zip/file', isFile: true },
+            { name: 'السوفت الاصلى للكومبو 10000.bin', info: 'ملف السوفت الأصلي لفرمتة وإصلاح الجهاز', url: 'https://www.mediafire.com/file/o60hbu50w8xdsj5/%25D8%25A7%25D9%2584%25D8%25B3%25D9%2588%25D9%2581%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25A7%25D8%25B5%25D9%2584%25D9%2589_%25D9%2584%25D9%2584%25D9%2583%25D9%2588%25D9%2585%25D8%25A8%25D9%2588_10000.bin/file', isFile: true, isOriginalBin: true }
+        ];
+
+        const loadFixFiles = [
+            { name: 'rom.bin', info: 'ملف السوفت الخاص بحل مشكلة لود (روم بن)', url: 'https://www.mediafire.com/file/lcws8hk2qpsq1d2/rom.bin/file', isFile: true }
+        ];
+
+        const androidSectionItems = [
+            { name: '2080 2090 applex3', info: 'Folders: 4, Files: 11', icon: 'fas fa-folder', isModel2080: true },
+            { name: 'Bigo', info: 'Folders: 0, Files: 1', icon: 'fas fa-folder', isBigoFolder: true },
+            { name: 'play', info: 'Folders: 0, Files: 1', icon: 'fas fa-folder' },
+            { name: 'twin', info: 'Folders: 3, Files: 4', icon: 'fas fa-folder' },
+            { name: 'Ultra', info: 'Folders: 0, Files: 1', icon: 'fas fa-folder' },
+            { name: '2050 و2070 جهاز', info: 'Folders: 1, Files: 12', icon: 'fas fa-folder' }
+        ];
+
+        const bigoSubItems = [
+            { name: 'BigoSoftware20260813.zip', info: 'تحديث سوفت وير جهاز بيجو الرسمي', url: 'https://www.mediafire.com/file/3ggnyauiajt59mf/BigoSoftware20260813.zip/file', isFile: true }
+        ];
+
+        const model2080SubItems = [
+            { name: 'سوفت وير اندرويد ام لوجيك', info: 'Folders: 2, Files: 3', icon: 'fas fa-folder', isAmlogicFolder: true },
+            { name: 'شعار لتغطية لوجو القناة', info: 'Folders: 0, Files: 4', icon: 'fas fa-folder', isLogoFolder: true },
+            { name: 'فيديو تنزيل هاها من الداونلودر.mp4', info: 'فيديو توضيحي لطريقة التحميل', url: 'https://www.mediafire.com/file/nc6kh3696k7u7rb/%25D9%2581%25D9%258A%25D8%25AF%25D9%258A%25D9%2588_%25D8%25AA%25D8%25B2%25D9%258A%25D8%25AF_%25D9%2587%25D8%25A7%25D8%25A7_%25D9%2585%25D9%2586_%25D8%25A7%25D9%2584%25D8%25AF%25D8%25A7%25D9%2588%25D9%2586%25D9%2584%25D9%2588%25D8%25AF%25D8%25B1.mp4/file', isFile: true, isVideo: true },
+            { name: 'نغمة الاشارة لل2080.mp4', info: 'ملف نغمة الإشارة', url: 'https://www.mediafire.com/file/4iyyjxcbezoezwi/%25D9%2586%25D8%25BA%25D9%2585%25D8%25A9_%25D8%25A7%25D8%25B4%25D8%25A7%25D8%25B1%25D8%25A9_%25D9%2584%25D9%25842080.mp4/file', isFile: true, isVideo: true },
+            { name: 'اعدادات هامة تعملها لو محتاج جهازك 2080و90 يشتغل افضل.mp4', info: 'فيديو الإعدادات الهامة', url: 'https://www.mediafire.com/file/24ewbe2t22rx5ar/%25D8%25A7%25D8%25B9%25D8%25AF%25D8%25A7%25D8%25AA_%25D9%2587%25D8%25A7%25D8%25A5_%25D8%25AA%25D8%25B9%25D9%2585%25D9%2584%25D9%2587%25D8%25A7_%25D9%2584%25D9%2588_%25D9%2585%25D8%25AD%25D8%25A7%25D8%25AC_%25D8%25AC%25D9%2587%25D8%25A7%25D8%25B2%25D9%2583_2080%25D9%258890_%25D9%2588%25D9%2588%25D8%25B4%25D8%25AA%25D8%25BA%25D9%2584_%25D8%25A7%25D9%2581%25D8%25B6%25D9%2584.mp4/file', isFile: true, isVideo: true },
+            { name: 'طريقه عمل مفضلة لل2080و2090.mp4', info: 'فيديو طريقة عمل المفضلة', url: 'https://www.mediafire.com/file/vj2ev0vckooo0z2/%25D8%25B7%25D8%25B1%25D9%258A%25D9%2582%25D9%2587_%25D8%25B9%25D9%2585%25D9%2584_%25D9%2585%25D9%2581%25D8%25B6%25D9%2584%25D8%25A9_%25D9%2584%25D9%25842080%25D9%25882090.mp4/file', isFile: true, isVideo: true }
+        ];
+
+        const logoSubItems = [
+            { name: 'beinlogo250.png', info: 'صورة شعار بين سبورت 250', url: 'https://www.mediafire.com/view/ofqmibne2mvjfwe/beinlogo250.png', isFile: true, isImage: true },
+            { name: 'beoutQ.png', info: 'صورة شعار بي أوت كيو', url: 'https://www.mediafire.com/view/l76cmjzw4xumogd/beoutQ.png', isFile: true, isImage: true },
+            { name: 'beoutQ2.png', info: 'صورة شعار بي أوت كيو 2', url: 'https://www.mediafire.com/view/ujliuht00waawla/beoutQ2.png', isFile: true, isImage: true },
+            { name: 'Bein_sport_ana_logo300.png', info: 'صورة شعار بين سبورت 300', url: 'https://www.mediafire.com/view/v90ir0dibllpp8v/Bein_sport_ana_logo300.png', isFile: true, isImage: true }
+        ];
+
+        const amlogicSubItems = [
+            { name: 'السوفت الاصلي لفورمات الجهاز سوفت قديم', info: 'Folders: 0, Files: 1', icon: 'fas fa-folder', isOldSoftFolder: true },
+            { name: 'السوفت الجديد للجوسات برو واخر الاضافات', info: 'Folders: 0, Files: 2', icon: 'fas fa-folder', isGausatFolder: true }
+        ];
+
+        const oldSoftSubItems = [
+            { name: 'starnet_s905x3_ott_s2_2112231759.zip', info: 'ملف السوفت القديم الرسمي', url: 'https://www.mediafire.com/file/2zgpbw94dw2e1rn/starnet_s905x3_ott_s2_2112231759.zip/file', isFile: true }
+        ];
+
+        const gausatSubItems = [
+            { name: '20230217_1620-EnigmaStyle.zip', info: 'تحديث جوسات برو (إصدار EnigmaStyle)', url: 'https://www.mediafire.com/file/hms0sc84zyld4ua/20230217_1620-EnigmaStyle.zip/file', isFile: true },
+            { name: 'starnet_s905x3_ott_s2_2309011422--g3.09.01.71.quick-release.zip', info: 'تحديث جوسات برو (إصدار quick-release)', url: 'https://www.mediafire.com/file/si7jmf6grrzu3ne/starnet_s905x3_ott_s2_2309011422--g3.09.01.71.quick-release.zip/file', isFile: true }
+        ];
+
+        const aliSectionItems = [
+            { name: 'فيفا فور كيه', info: 'Folders: 0, Files: 2', icon: 'fas fa-folder', isVevaFolder: true }
+        ];
+
+        const vevaSectionItems = [
+            { name: 'veva_software_v27.zip', info: 'تحديث فيفا فور كيه إصدار v27', url: 'https://www.mediafire.com/file/117kokfnz7tdoaj/veva_software_v27.zip/file', isFile: true },
+            { name: 'veva_26_Update.zip', info: 'تحديث فيفا فور كيه إصدار 26', url: 'https://www.mediafire.com/file/qyvfcc737eh56k3/veva_26_Update.zip/file', isFile: true }
+        ];
+
+        const linuxSectionItems = [
+            { name: 'حل مشكلة اون', info: 'مجلد يحتوي على ملف التحديث وشرح طريقة الحل', icon: 'fas fa-folder', isFixFolder: true },
+            { name: 'Linux_4K_V1.11.24162_20260820.bin', info: 'تحديث إصدار 24162 (تاريخ: 2026/08/20 - الأحدث)', url: 'https://www.mediafire.com/file/x60j4zbziyrrmrn/Linux_4K_V1.11.24162_20260820.bin/file', isFile: true },
+            { name: 'Linux_4K_V1.11.23919_20260807.bin', info: 'تحديث إصدار 23919 (تاريخ: 2026/08/07)', url: 'https://www.mediafire.com/file/6tlej156c9owvqn/Linux_4K_V1.11.23919_20260807.bin/file', isFile: true },
+            { name: 'Linux_4K_V1.11.23527_20260715.bin', info: 'تحديث إصدار 23527 (تاريخ: 2026/07/15)', url: 'https://www.mediafire.com/file/m3s1651a310oxh0/Linux_4K_V1.11.23527_20260715.bin/file', isFile: true },
+            { name: 'Linux_4K_V1.11.23173_20260628.bin', info: 'تحديث إصدار 23173 (تاريخ: 2026/06/28)', url: 'https://www.mediafire.com/file/x49t3aaao7k32dq/Linux_4K_V1.11.23173_20260628.bin/file', isFile: true },
+            { name: 'Linux_4K_V1.11.22976_20260617.bin', info: 'تحديث إصدار 22976 (تاريخ: 2026/06/17)', url: 'https://www.mediafire.com/file/b027dpag1f8j79k/Linux_4K_V1.11.22976_20260617.bin/file', isFile: true },
+            { name: 'Linux_4K_V1.11.22782_20260605.bin', info: 'تحديث إصدار 22782 (تاريخ: 2026/06/05)', url: 'https://www.mediafire.com/file/9xu4c6ovxhwwd4t/Linux_4K_V1.11.22782_20260605.bin/file', isFile: true },
+            { name: 'Linux_4K_V1.11.22636_20260528.bin', info: 'تحديث إصدار 22636 (تاريخ: 2026/05/28)', url: 'https://www.mediafire.com/file/l5obzpadi119p8l/Linux_4K_V1.11.22636_20260528.bin/file', isFile: true },
+            { name: 'Linux_4K_V1.11.22164_20260508.bin', info: 'تحديث إصدار 22164 (تاريخ: 2026/05/08)', url: 'https://www.mediafire.com/file/x5ybl9jo3dekcr7/Linux_4K_V1.11.22164_20260508.bin/file', isFile: true },
+            { name: 'Linux_4K_V1.11.22132_20260506.bin', info: 'تحديث إصدار 22132 (تاريخ: 2026/05/06)', url: 'https://www.mediafire.com/file/zmrwswjr4d28lt3/Linux_4K_V1.11.22132_20260506.bin/file', isFile: true },
+            { name: 'Linux_4K_V1.11.22114_20260505.bin', info: 'تحديث إصدار 22114 (تاريخ: 2026/05/05)', url: 'https://www.mediafire.com/file/eaedruj2gydnsvh/Linux_4K_V1.11.22114_20260505.bin/file', isFile: true }
+        ];
+
+        const fixOnFiles = [
+            { name: 'update.bin', info: 'ملف تحديث إصلاح مشكلة الإقلاع (Size: 89 MB)', url: 'https://www.mediafire.com/file/3nvewhxlhl1ydw8/update.bin/file', isFile: true, isFixBin: true },
+            { name: 'شرح طريقة الحل', info: 'صورة توضيحية لخطوات حل المشكلة (Size: 143 KB)', url: 'https://www.mediafire.com/view/knmfnmdhaw74kqo/شرح%20طريقة%20الحل.jfif', isFile: true, isImage: true }
+        ];
+
+        // نظام التحكم بالـ History للتأكد من عمل زر التاتش في الموبايل
+        function navigateTo(view, push = true) {
+            if (push) {
+                history.pushState({ view: view }, "", "#" + view);
+            }
+            renderView(view);
+        }
+
+        function renderView(view) {
+            let container = document.getElementById('foldersContainer');
+            container.innerHTML = '';
+
+            if (view === 'main') {
+                document.getElementById('pageTitle').innerText = "سوفتات وشروحات ستار نت";
+                document.getElementById('pageDesc').innerText = "المكتبة الشاملة لجميع سوفتويرات، ملفات القنوات، أكواد التفعيل، التطبيقات والشروحات الرسمية";
+                document.getElementById('breadcrumbContainer').style.display = 'none';
+
+                mainFolders.forEach(folder => {
+                    let card = document.createElement('a');
+                    card.href = "#";
+                    card.className = folder.full ? "folder-card full-width" : "folder-card";
+                    
+                    if(folder.hasSub) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('official_sub');
+                        };
+                    } else {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            selectCard(this);
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle"><i class="${folder.icon}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name">${folder.name}</span>
+                                <span class="folder-info">${folder.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            } 
+            else if (view === 'official_sub') {
+                document.getElementById('pageTitle').innerText = "سوفتوير ستارنت الرسمي";
+                document.getElementById('pageDesc').innerText = "المجلدات الفرعية المتاحة داخل قسم سوفتوير ستارنت الرسمي";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي";
+
+                subFoldersOfOfficialSoft.forEach(sub => {
+                    let card = document.createElement('a');
+                    card.href = "#";
+                    card.className = "folder-card";
+                    
+                    if(sub.isLinux) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('linux');
+                        };
+                    } else if(sub.isAli) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('ali');
+                        };
+                    } else if(sub.isAndroid) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('android');
+                        };
+                    } else if(sub.isSunplus) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('sunplus');
+                        };
+                    } else {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            selectCard(this);
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="${sub.icon}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name">${sub.name}</span>
+                                <span class="folder-info">${sub.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'sunplus') {
+                document.getElementById('pageTitle').innerText = "قسم الصن بلس";
+                document.getElementById('pageDesc').innerText = "ملفات وتحديثات صنباص وأقسام الأجهزة المختلفة";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الصن بلس";
+
+                sunplusSectionItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = "#";
+                    card.className = "folder-card";
+
+                    if(item.isCombo10000) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('combo_10000');
+                        };
+                    } else {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            selectCard(this);
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-gold); background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4);"><i class="${item.icon}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'combo_10000') {
+                document.getElementById('pageTitle').innerText = "combo 10000";
+                document.getElementById('pageDesc').innerText = "مجلدات وملفات تحديثات جهاز 10000 كومبو مرتبة من الأحدث للأقدم";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الصن بلس / combo 10000";
+
+                combo10000SubItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = item.url ? item.url : "#";
+                    if(item.isFile) card.target = "_blank";
+                    card.className = item.isFixLoad ? "folder-card fix-card full-width" : "folder-card full-width";
+
+                    if(item.isFixLoad) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('load_fix');
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="${item.isFixLoad ? 'background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4); color: var(--accent-gold);' : 'color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);'}"><i class="${item.isFixLoad ? 'fas fa-tools' : 'fas fa-file-archive'}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="${item.isFixLoad ? 'color: var(--accent-gold); font-size: 1.1rem;' : 'font-family: monospace;'}">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="${item.isFixLoad ? 'background: rgba(255,179,0,0.15); color: var(--accent-gold);' : 'background: rgba(0,210,255,0.15); color: var(--accent-cyan);'}"><i class="${item.isFile ? 'fas fa-download' : 'fas fa-chevron-left'}"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'load_fix') {
+                document.getElementById('pageTitle').innerText = "سوفت حل مشكلة لود";
+                document.getElementById('pageDesc').innerText = "ملفات حل مشكلة توقف الجهاز على لود";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الصن بلس / combo 10000 / سوفت حل مشكلة لود";
+
+                loadFixFiles.forEach(file => {
+                    let card = document.createElement('a');
+                    card.href = file.url;
+                    card.target = "_blank";
+                    card.className = "folder-card full-width fix-card";
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4); color: var(--accent-gold);"><i class="fas fa-file-code"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="color: var(--accent-gold); font-size: 1.1rem; font-family: monospace;">${file.name}</span>
+                                <span class="folder-info">${file.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="background: rgba(255,179,0,0.15); color: var(--accent-gold);"><i class="fas fa-download"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'android') {
+                document.getElementById('pageTitle').innerText = "قسم الاندرويد";
+                document.getElementById('pageDesc').innerText = "مجلدات وملفات قسم الأندرويد";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الاندرويد";
+
+                androidSectionItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = "#";
+                    card.className = "folder-card";
+
+                    if(item.isModel2080) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('model_2080');
+                        };
+                    } else if(item.isBigoFolder) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('bigo_folder');
+                        };
+                    } else {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            selectCard(this);
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="${item.icon}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'bigo_folder') {
+                document.getElementById('pageTitle').innerText = "Bigo";
+                document.getElementById('pageDesc').innerText = "ملفات سوفت وير جهاز بيجو";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الاندرويد / Bigo";
+
+                bigoSubItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = item.url;
+                    card.target = "_blank";
+                    card.className = "folder-card full-width";
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="fas fa-file-archive"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="font-family: monospace;">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'model_2080') {
+                document.getElementById('pageTitle').innerText = "2080 2090 applex3";
+                document.getElementById('pageDesc').innerText = "المجلدات والفيديوهات الخاصة بقسم 2080 و 2090 أبل إكس 3";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الاندرويد / 2080 2090 applex3";
+
+                model2080SubItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = item.url ? item.url : "#";
+                    if(item.isFile) card.target = "_blank";
+                    card.className = item.isFile ? "folder-card full-width" : "folder-card";
+
+                    if(item.isAmlogicFolder) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('amlogic');
+                        };
+                    } else if(item.isLogoFolder) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('logo_folder');
+                        };
+                    } else if(!item.isFile) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            selectCard(this);
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: ${item.isVideo ? 'var(--accent-gold)' : 'var(--accent-cyan)'}; background: ${item.isVideo ? 'rgba(255, 179, 0, 0.15)' : 'rgba(0, 210, 255, 0.15)'}; border-color: ${item.isVideo ? 'rgba(255, 179, 0, 0.4)' : 'rgba(0, 210, 255, 0.4)'};"><i class="${item.isVideo ? 'fas fa-video' : item.icon}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="${item.isVideo ? 'font-family: monospace; font-size: 0.95rem;' : ''}">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="background: ${item.isVideo ? 'rgba(255,179,0,0.15)' : 'rgba(0,210,255,0.15)'}; color: ${item.isVideo ? 'var(--accent-gold)' : 'var(--accent-cyan)'};"><i class="${item.isFile ? 'fas fa-download' : 'fas fa-chevron-left'}"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'logo_folder') {
+                document.getElementById('pageTitle').innerText = "شعار لتغطية لوجو القناة";
+                document.getElementById('pageDesc').innerText = "صور شعارات تغطية لوجو القناة";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الاندرويد / 2080 2090 applex3 / شعار لتغطية لوجو القناة";
+
+                logoSubItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = item.url;
+                    card.target = "_blank";
+                    card.className = "folder-card full-width";
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-gold); background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4);"><i class="fas fa-image"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="font-family: monospace; color: var(--accent-gold);">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="background: rgba(255,179,0,0.15); color: var(--accent-gold);"><i class="fas fa-external-link-alt"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'amlogic') {
+                document.getElementById('pageTitle').innerText = "سوفت وير اندرويد ام لوجيك";
+                document.getElementById('pageDesc').innerText = "مجلدات سوفت وير أندرويد أم لوجيك";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الاندرويد / 2080 2090 applex3 / سوفت وير اندرويد ام لوجيك";
+
+                amlogicSubItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = "#";
+                    card.className = "folder-card full-width";
+
+                    if(item.isOldSoftFolder) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('old_soft');
+                        };
+                    } else if(item.isGausatFolder) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('gausat');
+                        };
+                    } else {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            selectCard(this);
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="${item.icon}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'old_soft') {
+                document.getElementById('pageTitle').innerText = "السوفت الاصلي لفورمات الجهاز سوفت قديم";
+                document.getElementById('pageDesc').innerText = "ملفات السوفت القديم";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الاندرويد / 2080 2090 applex3 / سوفت وير اندرويد ام لوجيك / السوفت الاصلي لفورمات الجهاز";
+
+                oldSoftSubItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = item.url;
+                    card.target = "_blank";
+                    card.className = "folder-card full-width";
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="fas fa-file-archive"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="font-family: monospace;">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'gausat') {
+                document.getElementById('pageTitle').innerText = "السوفت الجديد للجوسات برو واخر الاضافات";
+                document.getElementById('pageDesc').innerText = "ملفات التحديث الخاصة بجوسات برو";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم الاندرويد / 2080 2090 applex3 / سوفت وير اندرويد ام لوجيك / السوفت الجديد للجوسات برو";
+
+                gausatSubItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = item.url;
+                    card.target = "_blank";
+                    card.className = "folder-card full-width";
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="fas fa-file-archive"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="font-family: monospace;">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'ali') {
+                document.getElementById('pageTitle').innerText = "قسم معالج ali";
+                document.getElementById('pageDesc').innerText = "مجلدات وملفات قسم معالج ألي";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم معالج ali";
+
+                aliSectionItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = "#";
+                    card.className = "folder-card";
+
+                    if(item.isVevaFolder) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('veva');
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-gold); background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4);"><i class="${item.icon}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'veva') {
+                document.getElementById('pageTitle').innerText = "فيفا فور كيه";
+                document.getElementById('pageDesc').innerText = "الملفات والمجلدات الخاصة بـ فيفا فور كيه";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم معالج ali / فيفا فور كيه";
+
+                vevaSectionItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = item.url ? item.url : "#";
+                    if(item.isFile) card.target = "_blank";
+                    card.className = "folder-card full-width";
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="fas fa-file-archive"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="font-family: monospace;">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'linux') {
+                document.getElementById('pageTitle').innerText = "قسم لينكس 4K";
+                document.getElementById('pageDesc').innerText = "ملفات السوفت وير وتحديثات لينكس ومجلد حل مشكلة أون";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم لينكس";
+
+                linuxSectionItems.forEach(item => {
+                    let card = document.createElement('a');
+                    card.href = item.url ? item.url : "#";
+                    if(item.isFile) card.target = "_blank";
+                    
+                    card.className = item.isFixFolder ? "folder-card fix-card full-width" : "folder-card full-width";
+
+                    if(item.isFixFolder) {
+                        card.onclick = function(e) {
+                            e.preventDefault();
+                            navigateTo('fix_on');
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle"><i class="${item.isFixFolder ? 'fas fa-tools' : 'fas fa-file-archive'}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="${item.isFixFolder ? 'color: var(--accent-gold); font-size: 1.1rem;' : 'font-family: monospace;'}">${item.name}</span>
+                                <span class="folder-info">${item.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="${item.isFile ? 'fas fa-download' : 'fas fa-chevron-left'}"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            else if (view === 'fix_on') {
+                document.getElementById('pageTitle').innerText = "حل مشكلة اون";
+                document.getElementById('pageDesc').innerText = "ملف التحديث (update.bin) وصورة شرح طريقة الحل";
+                document.getElementById('breadcrumbContainer').style.display = 'block';
+                document.getElementById('breadcrumbText').innerText = "سوفتوير ستارنت الرسمي / قسم لينكس / حل مشكلة اون";
+
+                fixOnFiles.forEach(file => {
+                    let card = document.createElement('a');
+                    card.href = file.url;
+                    card.target = "_blank";
+                    card.className = "folder-card fix-card full-width";
+
+                    card.innerHTML = `
+                        <div class="folder-right">
+                            <div class="folder-icon-circle" style="background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4); color: var(--accent-gold);"><i class="${file.isImage ? 'fas fa-image' : 'fas fa-file-code'}"></i></div>
+                            <div class="folder-texts">
+                                <span class="folder-name" style="color: var(--accent-gold); font-size: 1.1rem;">${file.name}</span>
+                                <span class="folder-info">${file.info}</span>
+                            </div>
+                        </div>
+                        <div class="folder-arrow" style="background: rgba(255,179,0,0.15); color: var(--accent-gold);"><i class="fas fa-external-link-alt"></i></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // الاستماع لأزرار التنقل (Back / Forward) في المتصفح أو الموبايل
+        window.onpopstate = function(event) {
+            if (event.state && event.state.view) {
+                renderView(event.state.view);
+            } else {
+                renderView('main');
+            }
+        };
+
+        function selectCard(element) {
+            document.querySelectorAll('.folder-card').forEach(el => el.classList.remove('is-selected'));
+            element.classList.add('is-selected');
+        }
+
+        window.onload = function() {
+            // تهيئة الحالة الأولية
+            history.replaceState({ view: 'main' }, "", "#main");
+            renderView('main');
+        };
+    </script>
+</body>
+</html>
