@@ -273,6 +273,34 @@
             word-break: break-word;
         }
 
+        .actions-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .copy-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            z-index: 5;
+        }
+        .copy-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            transform: scale(1.1);
+        }
+
         .folder-arrow {
             width: 36px;
             height: 36px;
@@ -294,6 +322,32 @@
 
         .full-width {
             grid-column: 1 / -1;
+        }
+
+        /* Toast Notification Styling */
+        #copyToast {
+            visibility: hidden;
+            min-width: 220px;
+            background: linear-gradient(135deg, #00d2ff, #0066ff);
+            color: #fff;
+            text-align: center;
+            border-radius: 30px;
+            padding: 12px 20px;
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 0.95rem;
+            font-weight: 800;
+            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+            transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
+            opacity: 0;
+        }
+        #copyToast.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px);
         }
 
         .whatsapp-container {
@@ -414,6 +468,9 @@
         </div>
     </main>
 
+    <!-- إشعار نسخ الرابط -->
+    <div id="copyToast"><i class="fas fa-check-circle"></i> تم نسخ الرابط بنجاح!</div>
+
     <footer>
         <p>جميع الحقوق محفوظة &copy; 2026 | مكتبة <strong>سوفتات وشروحات ستار نت</strong></p>
     </footer>
@@ -494,10 +551,10 @@
         const model2080SubItems = [
             { name: 'سوفت وير اندرويد ام لوجيك', info: 'Folders: 2, Files: 3', icon: 'fas fa-folder', isAmlogicFolder: true },
             { name: 'شعار لتغطية لوجو القناة', info: 'Folders: 0, Files: 4', icon: 'fas fa-folder', isLogoFolder: true },
-            { name: 'فيديو تنزيل هاها من الداونلودر.mp4', info: 'فيديو توضيحي لطريقة التحميل', url: 'https://www.mediafire.com/file/nc6kh3696k7u7rb/%25D9%2581%25D9%258A%25D8%25AF%25D9%258A%25D9%2588_%25D8%25AA%25D8%25B2%25D9%258A%25D8%25AF_%25D9%2587%25D8%25A7%25D8%25A7_%25D9%2585%25D9%2586_%25D8%25A7%25D9%2584%25D8%25AF%25D8%25A7%25D9%2588%25D9%2586%25D9%2584%25D9%2588%25D8%25AF%25D8%25B1.mp4/file', isFile: true, isVideo: true },
+            { name: 'فيديو تنزيل هاها من الداونلودر.mp4', info: 'فيديو توضيحي لطريقة التحميل', url: 'https://www.mediafire.com/file/nc6kh3696k7u7rb/%25D9%2581%25D9%258A%25D8%25AF%25D9%258A%25D9%2588_%25D8%25AA%25D8%25B2%25D9%258A%25D8%25AF_%25D9%2587%25D8%25A7%25D9%2587%25D8%25A7_%25D9%2585%25D9%2586_%25D8%25A7%25D9%2584%25D8%25AF%25D8%25A7%25D9%2588%25D9%2586%25D9%2584%25D9%2588%25D8%25AF%25D8%25B1.mp4/file', isFile: true, isVideo: true },
             { name: 'نغمة الاشارة لل2080.mp4', info: 'ملف نغمة الإشارة', url: 'https://www.mediafire.com/file/4iyyjxcbezoezwi/%25D9%2586%25D8%25BA%25D9%2585%25D8%25A9_%25D8%25A7%25D8%25B4%25D8%25A7%25D8%25B1%25D8%25A9_%25D9%2584%25D9%25842080.mp4/file', isFile: true, isVideo: true },
             { name: 'اعدادات هامة تعملها لو محتاج جهازك 2080و90 يشتغل افضل.mp4', info: 'فيديو الإعدادات الهامة', url: 'https://www.mediafire.com/file/24ewbe2t22rx5ar/%25D8%25A7%25D8%25B9%25D8%25AF%25D8%25A7%25D8%25AA_%25D9%2587%25D8%25A7%25D8%25A5_%25D8%25AA%25D8%25B9%25D9%2585%25D9%2584%25D9%2587%25D8%25A7_%25D9%2584%25D9%2588_%25D9%2585%25D8%25AD%25D8%25A7%25D8%25AC_%25D8%25AC%25D9%2587%25D8%25A7%25D8%25B2%25D9%2583_2080%25D9%258890_%25D9%2588%25D9%2588%25D8%25B4%25D8%25AA%25D8%25BA%25D9%2584_%25D8%25A7%25D9%2581%25D8%25B6%25D9%2584.mp4/file', isFile: true, isVideo: true },
-            { name: 'طريقه عمل مفضلة لل2080و2090.mp4', info: 'فيديو طريقة عمل المفضلة', url: 'https://www.mediafire.com/file/vj2ev0vckooo0z2/%25D8%25B7%25D8%25B1%25D9%258A%25D9%2582%25D9%2587_%25D8%25B9%25D9%2585%25D9%2584_%25D9%2585%25D9%2581%25D8%25B6%25D9%2584%25D8%25A9_%25D9%2584%25D9%25842080%25D9%25882090.mp4/file', isFile: true, isVideo: true }
+            { name: 'طريقه عمل مفضلة لل2080و2090.mp4', info: 'فيديو طريقة عمل المفضلة', url: 'https://www.mediafire.com/file/vj2ev0vckooo0z2/%25D8%25B7%25D8%25B1%25D9%258A%25D9%2582%25D9%2587_%25D8%25B9%25D9%2585%25D9%2584_%25D9%2585%25D8%25B1%25D8%25B6%25D9%2584%25D9%2589_%25D9%2584%25D9%25842080%25D9%25882090.mp4/file', isFile: true, isVideo: true }
         ];
 
         const logoSubItems = [
@@ -549,6 +606,36 @@
             { name: 'شرح طريقة الحل', info: 'صورة توضيحية لخطوات حل المشكلة (Size: 143 KB)', url: 'https://www.mediafire.com/view/knmfnmdhaw74kqo/شرح%20طريقة%20الحل.jfif', isFile: true, isImage: true }
         ];
 
+        // وظيفة نسخ الرابط فقط من غير فتح الرابط الأصلي
+        function copyFileLink(event, url) {
+            event.preventDefault(); // منع السلوك الافتراضي للرابط تماماً
+            event.stopPropagation(); // منع انتقال الحدث للعنصر الأب
+            
+            if (!url || url === '#') {
+                showToast('هذا العنصر عبارة عن مجلد وليس رابط مباشر للنسخ!');
+                return;
+            }
+
+            // النص الاحترافي الموحد مع الصورة الموحدة للرابط
+            const shareText = `🔗 *رابط تحميل الملف الرسمي*\n\n📥 اضغط للتحميل المباشر:\n${url}\n\n🖼️ المعاينة الرسمية:\nhttps://up6.cc/2026/09/178845370327891.png`;
+
+            navigator.clipboard.writeText(shareText).then(() => {
+                showToast('تم نسخ الرابط والمعاينة بنجاح! 📋');
+            }).catch(err => {
+                console.error('فشل النسخ: ', err);
+                showToast('حدث خطأ أثناء النسخ!');
+            });
+        }
+
+        function showToast(message) {
+            let toast = document.getElementById('copyToast');
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            toast.className = "show";
+            setTimeout(() => {
+                toast.className = toast.className.replace("show", "");
+            }, 3000);
+        }
+
         // نظام التحكم بالـ History للتأكد من عمل زر التاتش في الموبايل
         function navigateTo(view, push = true) {
             if (push) {
@@ -591,7 +678,9 @@
                                 <span class="folder-info">${folder.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        <div class="actions-group">
+                            <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -642,7 +731,9 @@
                                 <span class="folder-info">${sub.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        <div class="actions-group">
+                            <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -678,7 +769,9 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        <div class="actions-group">
+                            <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -691,8 +784,14 @@
 
                 combo10000SubItems.forEach(item => {
                     let card = document.createElement('a');
-                    card.href = item.url ? item.url : "#";
-                    if(item.isFile) card.target = "_blank";
+                    // إذا كان العنصر رابط مباشر، نجعله يفتح في نافذة جديدة عند النقر على الكارت نفسه
+                    if(item.isFile) {
+                        card.href = item.url;
+                        card.target = "_blank";
+                    } else {
+                        card.href = "#";
+                    }
+
                     card.className = item.isFixLoad ? "folder-card fix-card full-width" : "folder-card full-width";
 
                     if(item.isFixLoad) {
@@ -702,6 +801,9 @@
                         };
                     }
 
+                    // زر المشبك لنسخ الرابط فقط دون فتح الصفحة أو الرابط الأصلي
+                    let copyIconHtml = item.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${item.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle" style="${item.isFixLoad ? 'background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4); color: var(--accent-gold);' : 'color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);'}"><i class="${item.isFixLoad ? 'fas fa-tools' : 'fas fa-file-archive'}"></i></div>
@@ -710,7 +812,10 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="${item.isFixLoad ? 'background: rgba(255,179,0,0.15); color: var(--accent-gold);' : 'background: rgba(0,210,255,0.15); color: var(--accent-cyan);'}"><i class="${item.isFile ? 'fas fa-download' : 'fas fa-chevron-left'}"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="${item.isFixLoad ? 'background: rgba(255,179,0,0.15); color: var(--accent-gold);' : 'background: rgba(0,210,255,0.15); color: var(--accent-cyan);'}"><i class="${item.isFile ? 'fas fa-download' : 'fas fa-chevron-left'}"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -727,6 +832,8 @@
                     card.target = "_blank";
                     card.className = "folder-card full-width fix-card";
 
+                    let copyIconHtml = file.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${file.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle" style="background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4); color: var(--accent-gold);"><i class="fas fa-file-code"></i></div>
@@ -735,7 +842,10 @@
                                 <span class="folder-info">${file.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="background: rgba(255,179,0,0.15); color: var(--accent-gold);"><i class="fas fa-download"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="background: rgba(255,179,0,0.15); color: var(--accent-gold);"><i class="fas fa-download"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -776,7 +886,9 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        <div class="actions-group">
+                            <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -793,6 +905,8 @@
                     card.target = "_blank";
                     card.className = "folder-card full-width";
 
+                    let copyIconHtml = item.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${item.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="fas fa-file-archive"></i></div>
@@ -801,7 +915,10 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -814,8 +931,12 @@
 
                 model2080SubItems.forEach(item => {
                     let card = document.createElement('a');
-                    card.href = item.url ? item.url : "#";
-                    if(item.isFile) card.target = "_blank";
+                    if(item.isFile) {
+                        card.href = item.url;
+                        card.target = "_blank";
+                    } else {
+                        card.href = "#";
+                    }
                     card.className = item.isFile ? "folder-card full-width" : "folder-card";
 
                     if(item.isAmlogicFolder) {
@@ -835,6 +956,8 @@
                         };
                     }
 
+                    let copyIconHtml = item.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${item.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle" style="color: ${item.isVideo ? 'var(--accent-gold)' : 'var(--accent-cyan)'}; background: ${item.isVideo ? 'rgba(255, 179, 0, 0.15)' : 'rgba(0, 210, 255, 0.15)'}; border-color: ${item.isVideo ? 'rgba(255, 179, 0, 0.4)' : 'rgba(0, 210, 255, 0.4)'};"><i class="${item.isVideo ? 'fas fa-video' : item.icon}"></i></div>
@@ -843,7 +966,10 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="background: ${item.isVideo ? 'rgba(255,179,0,0.15)' : 'rgba(0,210,255,0.15)'}; color: ${item.isVideo ? 'var(--accent-gold)' : 'var(--accent-cyan)'};"><i class="${item.isFile ? 'fas fa-download' : 'fas fa-chevron-left'}"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="background: ${item.isVideo ? 'rgba(255,179,0,0.15)' : 'rgba(0,210,255,0.15)'}; color: ${item.isVideo ? 'var(--accent-gold)' : 'var(--accent-cyan)'};"><i class="${item.isFile ? 'fas fa-download' : 'fas fa-chevron-left'}"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -860,6 +986,8 @@
                     card.target = "_blank";
                     card.className = "folder-card full-width";
 
+                    let copyIconHtml = item.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${item.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle" style="color: var(--accent-gold); background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4);"><i class="fas fa-image"></i></div>
@@ -868,7 +996,10 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="background: rgba(255,179,0,0.15); color: var(--accent-gold);"><i class="fas fa-external-link-alt"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="background: rgba(255,179,0,0.15); color: var(--accent-gold);"><i class="fas fa-external-link-alt"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -909,7 +1040,9 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        <div class="actions-group">
+                            <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -926,6 +1059,8 @@
                     card.target = "_blank";
                     card.className = "folder-card full-width";
 
+                    let copyIconHtml = item.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${item.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="fas fa-file-archive"></i></div>
@@ -934,7 +1069,10 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -951,6 +1089,8 @@
                     card.target = "_blank";
                     card.className = "folder-card full-width";
 
+                    let copyIconHtml = item.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${item.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="fas fa-file-archive"></i></div>
@@ -959,7 +1099,10 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -990,7 +1133,9 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        <div class="actions-group">
+                            <div class="folder-arrow"><i class="fas fa-chevron-left"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -1007,6 +1152,8 @@
                     if(item.isFile) card.target = "_blank";
                     card.className = "folder-card full-width";
 
+                    let copyIconHtml = item.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${item.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle" style="color: var(--accent-cyan); background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4);"><i class="fas fa-file-archive"></i></div>
@@ -1015,7 +1162,10 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="fas fa-download"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -1040,6 +1190,8 @@
                         };
                     }
 
+                    let copyIconHtml = item.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${item.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle"><i class="${item.isFixFolder ? 'fas fa-tools' : 'fas fa-file-archive'}"></i></div>
@@ -1048,7 +1200,10 @@
                                 <span class="folder-info">${item.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="${item.isFile ? 'fas fa-download' : 'fas fa-chevron-left'}"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan);"><i class="${item.isFile ? 'fas fa-download' : 'fas fa-chevron-left'}"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
@@ -1065,6 +1220,8 @@
                     card.target = "_blank";
                     card.className = "folder-card fix-card full-width";
 
+                    let copyIconHtml = file.url ? `<button class="copy-btn" onclick="copyFileLink(event, '${file.url}')" title="نسخ الرابط مع الصورة الاحترافية"><i class="fas fa-paperclip"></i></button>` : '';
+
                     card.innerHTML = `
                         <div class="folder-right">
                             <div class="folder-icon-circle" style="background: rgba(255, 179, 0, 0.15); border-color: rgba(255, 179, 0, 0.4); color: var(--accent-gold);"><i class="${file.isImage ? 'fas fa-image' : 'fas fa-file-code'}"></i></div>
@@ -1073,7 +1230,10 @@
                                 <span class="folder-info">${file.info}</span>
                             </div>
                         </div>
-                        <div class="folder-arrow" style="background: rgba(255,179,0,0.15); color: var(--accent-gold);"><i class="fas fa-external-link-alt"></i></div>
+                        <div class="actions-group">
+                            ${copyIconHtml}
+                            <div class="folder-arrow" style="background: rgba(255,179,0,0.15); color: var(--accent-gold);"><i class="fas fa-external-link-alt"></i></div>
+                        </div>
                     `;
                     container.appendChild(card);
                 });
